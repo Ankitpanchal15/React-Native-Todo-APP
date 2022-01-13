@@ -1,16 +1,18 @@
-import React from 'react';
-import {View,Text, Pressable , StyleSheet,TouchableOpacity} from 'react-native';
+import React,{useState} from 'react';
+import {Text, StyleSheet,TouchableOpacity} from 'react-native';
 import {MaterialIcons} from "@expo/vector-icons";
 
 const TodoItem = ({item,removeHandler})=> {
 
+  const [taskcomplete,setTaskComplete] = useState(false);
+
     return (
-        <View style={style.todoItem}>
-           <Text style={style.text} >{item.text}</Text>
+        <TouchableOpacity onPress={()=> setTaskComplete(!taskcomplete) } style={style.todoItem}>
+           <Text style={taskcomplete ? style.taskCompleteText : style.text} >{item.text}</Text>
            <TouchableOpacity  onPress={()=>removeHandler(item.key)} >
                <Text style={style.button}><MaterialIcons size={20}  name="delete" /></Text>
             </TouchableOpacity> 
-        </View>
+        </TouchableOpacity>
     )
 }
 
@@ -25,7 +27,11 @@ const style = StyleSheet.create({
      borderRadius:5
     },
     text:{
-      fontSize:16
+      fontSize:16,
+    },
+    taskCompleteText : {
+      fontSize:16,
+      textDecorationLine:"line-through"
     },
     button:{
       textAlignVertical:"center",

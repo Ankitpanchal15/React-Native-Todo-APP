@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const Header = ()=> {
+const Header = ({title})=> {
     return(
         <View style={styles.header}>
-            <Text style={styles.title}>Todo APP</Text>
+            <Text style={styles.title}>{title}</Text>
         </View>
     )
 }
@@ -15,13 +15,13 @@ const styles = StyleSheet.create({
         paddingVertical:10,
         paddingHorizontal: 10,
         width:"100%",
-        marginTop:80,
+        marginTop:45,
         backgroundColor:"#678D58",
        
     },
     title:{
         color:"#fff",
-         textAlign:"left",
+        textAlign:"left",
         fontSize:30
     }
 })
